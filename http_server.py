@@ -14,9 +14,9 @@ serverSocket.listen(max_queue_size)
 
 while True:
     # Establish connection
-    print ("Ready to serve...")
+    print("Ready to serve...")
     connectionSocket, addr = serverSocket.accept()
-    print ("Connecting to {}\n".format(addr))
+    print("Connecting to {}\n".format(addr))
     
     try:
         # Request line
