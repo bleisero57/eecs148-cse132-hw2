@@ -7,7 +7,7 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Prepare server socket
 host = socket.gethostname() # localhost
-port = 666
+port = 12345
 print("Server starting: {}:{}\n".format(host, port))
 serverSocket.bind((host, port))
 serverSocket.listen(max_queue_size)

@@ -1,5 +1,4 @@
 import socket
-import smtplib
 import sys
 import os
 
@@ -10,13 +9,14 @@ endmsg = "\r\n.\r\n"
 ### Main ###
 
 # Connect to the local host (an EECS server, where this code should be executed)
-
 mailserver = "localhost"
+#mailserver = socket.gethostname()
 
 # Create a socket called clientSocket and establish a TCP connection w/mailserver
-#todo
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientSocket.connect((mailserver, 465))
 
-recv = clienSocket.recv(1024).decode()
+recv = clientSocket.recv(1024).decode()
 
 print(recv)
 

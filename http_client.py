@@ -12,16 +12,18 @@ else:
     port = sys.argv[2]
     filename = sys.argv[3]
 
+port = int(port)
+
 if filename[-5:].lower() == ".html":
-    req = b"GET {} HTTP/1.1".format(filename)
+    req = "GET {}{} HTTP/1.1".format(os.path.sep, filename)
 else:
-    req = b"GET {}.html HTTP/1.1".format(filename)
+    req = "GET {}{}.html HTTP/1.1".format(os.path.sep, filename)
     
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((host, port))
 print("\tConnecting to {}:{}".format(host, port))
-sock.send(req)
+sock.send(req.encode())
 print("\tSending request:\n{}\n".format(req))
 recv = str(sock.recv(1024), "utf-8")
-print("\tRevieved:\n{}".format(recv])
+print("\tRevieved:\n{}".format(recv))
 sock.close()
