@@ -38,19 +38,75 @@ if recv1[:3] != '250':
     print('250 reply not received from server.')
 
 # Send MAIL FROM command and print server response
-#todo
 
+mailCommand = "MAIL FROM: \r\n"#todo
+
+clientSocket.send(mailCommand.encode())
+
+recv2 = clientSocket.recv(1024).decode()
+
+print(recv2)
+
+if recv2[:3] != '250':
+    print('250 reply not received from server.')
+    
 # Send RCPT TO command and print server response
-#todo
 
+rcptCommand = ""
+
+clientSocket.send(rcptCommand.encode())
+
+recv3 = clientSocket.recv(1024).decode()
+
+print(recv3)
+
+if recv3[:3] != '250':
+    print('250 reply not received from server.')
+    
 # Send DATA command and print server response
-#todo
 
+dataCommand = ""
+
+clientSocket.send(dataCommand.encode())
+
+recv4 = clientSocket.recv(1024).decode()
+
+print(recv4)
+
+if recv4[:3] != '354':
+    print('345 reply not received from server.')
+    
 # Send message data
-#todo
+
+clientSocket.send(msg.encode())
+
+recv5 = clientSocket.recv(1024).decode()
+
+print(recv5)
+
+if recv5[:3] != '250':
+    print('250 reply not received from server.')
 
 # Message ends w/single period
-#todo
+
+clientSocket.send(endmsg.encode())
+
+recv6 = clientSocket.recv(1024).decode()
+
+print(recv6)
+
+if recv6[:3] != '250':
+    print('250 reply not received from server.')
 
 # Send QUIT command and get server response
-#todo
+
+quitCommand = "QUIT"
+
+clientSocket.send(mailCommand.encode())
+
+recv7 = clientSocket.recv(1024).decode()
+
+print(recv7)
+
+if recv7[:3] != '221':
+    print('221 reply not received from server.')
